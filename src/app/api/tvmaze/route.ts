@@ -1,4 +1,4 @@
-import { CompleteShowData, TVMazeEpisode, TVMazeSeason } from '@/types/tvmaze'
+import { TVMazeAnime, TVMazeEpisode, TVMazeSeason } from '@/types/tvmaze'
 import { NextResponse } from 'next/server'
 
 const TVMAZE_BASE_URL = 'https://api.tvmaze.com'
@@ -30,7 +30,7 @@ async function lookupShowId (imdbId: string | null, tvdbId: string | null): Prom
   }
 }
 
-async function getCompleteShowDetails (showId: number): Promise<CompleteShowData | null> {
+async function getCompleteShowDetails (showId: number): Promise<TVMazeAnime | null> {
   try {
     // Hacer todas las peticiones en paralelo para mejor rendimiento
     const [

@@ -16,7 +16,7 @@ export async function GET (request: Request): Promise<NextResponse> {
 
     return new NextResponse(buffer, {
       headers: {
-        'Content-Type': contentType || 'application/octet-stream',
+        'Content-Type': contentType ?? 'application/octet-stream',
         'Access-Control-Allow-Origin': '*'
       }
     })

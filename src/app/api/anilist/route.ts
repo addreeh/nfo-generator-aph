@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { AniListAnime } from '@/types'
+import { AniListAnime } from '@/types/anilist'
 
 export async function GET (request: Request): Promise<NextResponse> {
   const { searchParams } = new URL(request.url)

@@ -251,7 +251,6 @@ export const AnimeInfo = ({ selectedAnime, selectedProvider, setSelectedProvider
                   onValueChange={(value: Provider) => handleProviderChange(value)}
                   defaultValue={selectedProvider}
                   disabled={loading}
-                  className='w-[240px]'
                 >
                   <SelectTrigger>
                     <SelectValue placeholder='Select provider' />
