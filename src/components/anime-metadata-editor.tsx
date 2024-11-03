@@ -483,7 +483,7 @@ export default function AnimeMetadataEditor ({
       <div className='flex justify-between items-center mb-4'>
         <h1 className='text-3xl font-bold'>{anime.title.romaji}</h1>
         <Button
-          onClick={handleSave}
+          onClick={async () => await handleSave()}
           disabled={loading || isSaving}
         >
           {isSaving

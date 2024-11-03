@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 export function generateNFO (anime: any, images: any): string {
   console.log('Datos de entrada del anime:', anime)
   const currentDate = new Date().toISOString().split('T')[0]
 
-  const indent = (level: number) => '  '.repeat(level)
+  const indent = (level: number): string => '  '.repeat(level)
 
   let nfo = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <tvshow>
