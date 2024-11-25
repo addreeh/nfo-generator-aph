@@ -32,7 +32,7 @@ export async function GET (request: Request): Promise<NextResponse> {
     }
 
     const xmlData = await response.text()
-    const result = await parseXML(xmlData)
+    const result: any = await parseXML(xmlData)
 
     if (result.error) {
       return NextResponse.json({ error: result.error }, { status: 400 })
