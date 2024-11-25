@@ -38,6 +38,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/xml2js": "^0.4.14",
     "lodash": "^4.17.21",
     "next-themes": "^0.3.0",
     "postcss": "^8",

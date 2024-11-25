@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 
-const API_KEY = '706d813bdd44c1cfdf7cc69c8748e4a8'
+const TMDB_API_KEY = process.env.TMDB_API_KEY
 const BASE_URL = 'https://api.themoviedb.org/3'
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p'
 
@@ -18,7 +18,7 @@ export async function GET (request: Request): Promise<NextResponse> {
     // Si tenemos una query, primero buscamos el ID de TMDB
     if (query) {
       const searchResponse = await fetch(
-        `${BASE_URL}/search/tv?api_key=${API_KEY}&language=${language}&query=${encodeURIComponent(query)}`
+        `${BASE_URL}/search/tv?api_key=${TMDB_API_KEY as string}&language=${language}&query=${encodeURIComponent(query)}`
       )
       const searchData = await searchResponse.json()
 
@@ -26,7 +26,7 @@ export async function GET (request: Request): Promise<NextResponse> {
       if (searchData.results.length === 0) {
         const firstWord = query.split(' ')[0]
         const fallbackSearchResponse = await fetch(
-          `${BASE_URL}/search/tv?api_key=${API_KEY}&language=${language}&query=${encodeURIComponent(firstWord)}`
+          `${BASE_URL}/search/tv?api_key=${TMDB_API_KEY as string}&language=${language}&query=${encodeURIComponent(firstWord)}`
         )
         const fallbackSearchData = await fallbackSearchResponse.json()
 
@@ -46,13 +46,13 @@ export async function GET (request: Request): Promise<NextResponse> {
     if (id) {
       // 1. Obtener detalles básicos con información adicional
       const detailsResponse = await fetch(
-        `${BASE_URL}/tv/${id}?api_key=${API_KEY}&language=${language}&append_to_response=credits,videos,external_ids,recommendations,similar,keywords,content_ratings`
+        `${BASE_URL}/tv/${id}?api_key=${TMDB_API_KEY as string}&language=${language}&append_to_response=credits,videos,external_ids,recommendations,similar,keywords,content_ratings`
       )
       const details = await detailsResponse.json()
 
       // 2. Obtener todas las imágenes disponibles
       const imagesResponse = await fetch(
-        `${BASE_URL}/tv/${id}/images?api_key=${API_KEY}&include_image_language=en,null,${language}`
+        `${BASE_URL}/tv/${id}/images?api_key=${TMDB_API_KEY as string}&include_image_language=en,null,${language}`
       )
       const imagesData = await imagesResponse.json()
 
@@ -60,12 +60,12 @@ export async function GET (request: Request): Promise<NextResponse> {
       const seasons = await Promise.all(
         details.seasons.map(async (season: any) => {
           const seasonResponse = await fetch(
-            `${BASE_URL}/tv/${id as string}/season/${season.season_number as string}?api_key=${API_KEY}&language=${language}`
+            `${BASE_URL}/tv/${id as string}/season/${season.season_number as string}?api_key=${TMDB_API_KEY as string}&language=${language}`
           )
           const seasonData = await seasonResponse.json()
 
           const seasonImagesResponse = await fetch(
-            `${BASE_URL}/tv/${id as string}/season/${season.season_number as string}/images?api_key=${API_KEY}`
+            `${BASE_URL}/tv/${id as string}/season/${season.season_number as string}/images?api_key=${TMDB_API_KEY as string}`
           )
           const seasonImages = await seasonImagesResponse.json()
 

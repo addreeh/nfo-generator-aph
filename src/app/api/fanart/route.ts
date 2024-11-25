@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-const FANART_API_KEY = 'ca3872bcef578f24769a87b99d7200d2'
 const FANART_BASE_URL = 'http://webservice.fanart.tv/v3'
+const FANART_API_KEY = process.env.FANART_API_KEY
 
 interface FanartTVResponse {
   name?: string

@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 
-const API_KEY = '22ad50f5'
+const OMDB_API_KEY = process.env.OMDB_API_KEY
 
 export async function GET (request: Request): Promise<NextResponse> {
   const { searchParams } = new URL(request.url)
@@ -11,7 +11,7 @@ export async function GET (request: Request): Promise<NextResponse> {
   }
 
   try {
-    const response = await fetch(`http://www.omdbapi.com/?t=${query}&plot=full&apikey=${API_KEY}`)
+    const response = await fetch(`http://www.omdbapi.com/?t=${query}&plot=full&apikey=${OMDB_API_KEY as string}`)
     const data = await response.json()
     return NextResponse.json(data)
   } catch (error) {

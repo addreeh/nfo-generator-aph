@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 
-const TVDB_API_KEY = '32bfaa60-bba4-41d2-9e19-ab172486b559'
+const TVDB_API_KEY = process.env.TVDB_API_KEY
 const TVDB_BASE_URL = 'https://api4.thetvdb.com/v4'
 
 interface TVDBAuthResponse {
