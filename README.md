@@ -1,4 +1,4 @@
-# 🎌 AnimeMetaForge
+# 🎌 NFOGeneratorAPH
 
 A powerful web application built with Next.js that helps you gather and combine anime metadata from various sources into a single, customized NFO file. Perfect for organizing your anime collection with rich metadata from trusted sources.
 
